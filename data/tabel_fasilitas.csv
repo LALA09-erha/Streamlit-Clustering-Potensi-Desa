@@ -1,0 +1,453 @@
+No,Desa/Kelurahan,Kecamatan,fasilitas,Skala
+1,Dalpenang,Sampang,5,2
+2,Tamberu Daya,Sokobanah,4,2
+3,Ketapang Daya,Ketapang,5,2
+4,Jaddih,Socah,4,2
+5,P.Mandangin,Sampang,4,2
+6,Bancaran,Bangkalan,4,2
+7,Banyuanyar,Sampang,4,2
+8,Keraton,Bangkalan,4,2
+9,Karang Dalem,Sampang,4,2
+10,Kramat,Kedungdung,4,2
+11,Banyubunih,Galis,4,2
+12,Morkepek,Labang,4,2
+13,Bira Tengah,Sokobanah,4,2
+14,Ketapang Laok,Ketapang,4,2
+15,Kwanyar Barat,Kwanyar,4,2
+16,Kamal,Kamal,4,2
+17,Klobur,Sreseh,5,2
+18,Pangarengan,Pangarengan,4,2
+19,Bator,Klampis,3,1
+20,Pernajuh,Socah,2,1
+21,Parseh,Socah,3,1
+22,Montor,Banyuates,3,1
+23,Batioh,Banyuates,2,1
+24,Manggaan,Modung,2,1
+25,Polagan,Sampang,3,1
+26,Genteng,Konang,2,1
+27,Ketetang,Kwanyar,3,1
+28,Tamberu Barat,Sokobanah,3,1
+29,Rong Tengah,Sampang,3,1
+30,Taddan,Camplong,3,1
+31,Tambaan,Camplong,2,1
+32,Dharma Camplong,Camplong,3,1
+33,Daleman,Galis,2,1
+34,Rabiyan,Ketapang,2,1
+35,Bira Timur,Sokobanah,3,1
+36,Geger,Geger,2,1
+37,Gng Maddah,Sampang,3,1
+38,Durjan,Kokop,3,1
+39,Buduran,Arosbaya,3,1
+40,Patemon,Tanah Merah,3,1
+41,Ujung Piring,Bangkalan,3,1
+42,Sembilangan,Bangkalan,2,1
+43,Temoran,Omben,3,1
+44,Mertajasah,Bangkalan,3,1
+45,Mlajah,Bangkalan,2,1
+46,Tanjung Bumi,Tanjung Bumi,2,1
+47,Pangeranan,Bangkalan,2,1
+48,Demangan,Bangkalan,3,1
+49,Pejagan,Bangkalan,2,1
+50,Tambak,Omben,2,1
+51,Pocong,Tragah,3,1
+52,Napolaok,Omben,2,1
+53,Kemoneng,Tragah,0,0
+54,Tlangoh,Tanjung Bumi,0,0
+55,Banyu Sangkah,Tanjung Bumi,0,0
+56,Bangsah,Sreseh,0,0
+57,Aengtabar,Tanjung Bumi,0,0
+58,Bundah,Sreseh,0,0
+59,Alang Alang,Tragah,0,0
+60,Labang,Sreseh,0,0
+61,Birem,Tambelangan,0,0
+62,Bringin Nonggal,Torjun,0,0
+63,Marparan,Sreseh,0,0
+64,Patapan,Torjun,0,0
+65,Soket Laok,Tragah,0,0
+66,Disanah,Sreseh,0,0
+67,Sreseh,Sreseh,0,0
+68,Taman  ,Sreseh,0,0
+69,Labuhan,Sreseh,0,0
+70,Bajeman,Tragah,0,0
+71,Torjunan,Torjun,0,0
+72,Plasah,Sreseh,0,0
+73,Banjar Billah,Tambelangan,0,0
+74,Telaga Biru,Tanjung Bumi,0,0
+75,Somber,Tambelangan,0,0
+76,Tambelangan,Tambelangan,0,0
+77,Barung Gagah,Tambelangan,0,0
+78,Mambulu Barat,Tambelangan,0,0
+79,Bringin,Tambelangan,0,0
+80,Dulang,Torjun,0,0
+81,Samaran,Tambelangan,0,0
+82,Karang Anyar,Tambelangan,0,0
+83,Macajah,Tanjung Bumi,1,0
+84,Paseseh,Tanjung Bumi,0,0
+85,Patarongan,Torjun,0,0
+86,Pangongsean,Torjun,0,0
+87,Tamberu Timur,Sokobanah,0,0
+88,Batorasang,Tambelangan,0,0
+89,Junok,Sreseh,0,0
+90,Krampon,Torjun,0,0
+91,Noreh,Sreseh,0,0
+92,Karang Leman,Tragah,0,0
+93,Tambin,Tragah,0,0
+94,Gunung Sekar,Sampang,1,0
+95,Bancang,Tragah,0,0
+96,Aeng Sareh,Sampang,0,0
+97,Pandiyangan,Robatal,0,0
+98,Gunung Rancak,Robatal,0,0
+99,Jelgung,Robatal,0,0
+100,Tragih,Robatal,0,0
+101,Masaran,Tragah,0,0
+102,Torjunan,Robatal,0,0
+103,Pacangan,Tragah,0,0
+104,Sawah tengah,Robatal,0,0
+105,Robatal,Robatal,0,0
+106,Lepelle,Robatal,0,0
+107,Bepelle,Robatal,0,0
+108,Pamorah,Tragah,0,0
+109,Banyu Bese,Tragah,0,0
+110,Tragah,Tragah,0,0
+111,Jaddung,Tragah,0,0
+112,Ja'ah,Tragah,0,0
+113,Jeruk Porot,Torjun,0,0
+114,Sokobanah Daya,Sokobanah,0,0
+115,Paseyan,Sampang,0,0
+116,Sokobanah Tengah,Sokobanah,0,0
+117,Soket Daya,Tragah,0,0
+118,Tamberu Laok,Sokobanah,0,0
+119,Sokobanah Laok,Sokobanah,0,0
+120,Dukotambin,Tragah,0,0
+121,Keteleng,Tragah,0,0
+122,Tobai Timur,Sokobanah,0,0
+123,Tobai Tengah,Sokobanah,0,0
+124,Tobai Barat,Sokobanah,0,0
+125,Pangelen,Sampang,0,0
+126,Banyumas,Sampang,0,0
+127,Kamoning,Sampang,0,0
+128,Tanggumong,Sampang,0,0
+129,Pakalongan,Sampang,0,0
+130,Taman Sareh,Sampang,0,0
+131,Baruh,Sampang,0,0
+132,Panggung,Sampang,0,0
+133,Pandan Lanjang,Arosbaya,0,0
+134,Terosan,Banyuates,0,0
+135,Kodak,Torjun,0,0
+136,Kanjar,Torjun,0,0
+137,Pangereman,Ketapang,0,0
+138,Karang Anyar,Ketapang,0,0
+139,Pancor,Ketapang,0,0
+140,Bunten Timur,Ketapang,0,0
+141,Bunten Barat,Ketapang,0,0
+142,Paopale laok,Ketapang,0,0
+143,Palenggiyen,Kedungdung,0,0
+144,Pasarenan,Kedungdung,0,0
+145,Daleman,Kedungdung,0,0
+146,Gunung Eleh,Kedungdung,0,0
+147,Batu poro timur,Kedungdung,0,0
+148,Batu poro barat,Kedungdung,0,0
+149,Kedungdung,Kedungdung,0,0
+150,Pajeruan,Kedungdung,0,0
+151,Ombul,Kedungdung,0,0
+152,Banjar,Kedungdung,0,0
+153,Nyeloh,Kedungdung,0,0
+154,Bajrasokah,Kedungdung,0,0
+155,Muktesareh,Kedungdung,0,0
+156,Rahayu,Kedungdung,0,0
+157,Rabasan,Kedungdung,0,0
+158,Banyukapah,Kedungdung,0,0
+159,Komis,Kedungdung,0,0
+160,Bira Barat,Ketapang,0,0
+161,Ketapang Timur,Ketapang,0,0
+162,Ketapang Barat,Ketapang,1,0
+163,Jrangoan,Omben,0,0
+164,Pacanggaan,Pangarengan,0,0
+165,Penyerangan,Pangarengan,0,0
+166,Gulbung,Pangarengan,0,0
+167,Apaaan,Pangarengan,0,0
+168,Karang Gayam,Omben,0,0
+169,Rapa Daya,Omben,0,0
+170,Pandan,Omben,0,0
+171,Rongdalem,Omben,0,0
+172,Rapalaok,Omben,0,0
+173,Angsokah,Omben,0,0
+174,Napo Daya,Omben,0,0
+175,Paopale Daya,Ketapang,0,0
+176,Sogiyan,Omben,0,0
+177,Omben,Omben,0,0
+178,Kamondung,Omben,0,0
+179,Madulang,Omben,0,0
+180,Meteng,Omben,0,0
+181,Gersempal,Omben,0,0
+182,Astapah,Omben,0,0
+183,Karang Nangger,Omben,0,0
+184,Kebun Sareh,Omben,0,0
+185,Banyu Sokah,Ketapang,0,0
+186,Karang penang oloh,Karang penang,0,0
+187,Poreh,Karang penang,0,0
+188,Bulmatet,Karang penang,0,0
+189,Asem Jaran,Banyuates,0,0
+190,Prajjan,Camplong,0,0
+191,Banjar Talela,Camplong,0,0
+192,Trapang,Banyuates,0,0
+193,Jatra Timur,Banyuates,0,0
+194,Banyuates,Banyuates,0,0
+195,Masaran,Banyuates,0,0
+196,Nepa,Banyuates,0,0
+197,Tebanah,Banyuates,0,0
+198,Morbatoh,Banyuates,0,0
+199,Kambang Jeruk,Banyuates,0,0
+200,Tambak Pocok,Tanjung Bumi,0,0
+201,Sejati,Camplong,1,0
+202,Tapaan,Banyuates,0,0
+203,Nagasareh,Banyuates,0,0
+204,Tragah,Banyuates,0,0
+205,Lar-lar,Banyuates,0,0
+206,Tolang,Banyuates,0,0
+207,Planggaran Timur,Banyuates,0,0
+208,Planggaran Barat,Banyuates,0,0
+209,Olor,Banyuates,0,0
+210,Tana Mera,Torjun,0,0
+211,Kara,Torjun,0,0
+212,Batu Karang,Camplong,0,0
+213,Dharma Tanjung,Camplong,0,0
+214,Karang penang onjur,Karang penang,0,0
+215,Buler,Jrengik,0,0
+216,Gunung Kesan,Karang penang,0,0
+217,Tlambah,Karang penang,0,0
+218,Bluuran,Karang penang,0,0
+219,Panyepen,Jrengik,0,0
+220,Taman,Jrengik,0,0
+221,Jrengik,Jrengik,0,0
+222,Kotah,Jrengik,0,0
+223,Jungkarang,Jrengik,0,0
+224,Mlaka,Jrengik,0,0
+225,Bancelok,Jrengik,0,0
+226,Plakaran,Jrengik,0,0
+227,Rabasan,Camplong,0,0
+228,Asem Raja,Jrengik,0,0
+229,Kalangan Prao,Jrengik,0,0
+230,Majangan,Jrengik,0,0
+231,Asem Nonggal,Jrengik,0,0
+232,Margantoko,Jrengik,0,0
+233,Plampaan,Camplong,0,0
+234,Pamolaan,Camplong,0,0
+235,Madupat,Camplong,0,0
+236,Anggersek,Camplong,0,0
+237,Banjar Tabulu,Camplong,0,0
+238,Bumi Anyar,Tanjung Bumi,0,0
+239,Rongdurin,Tanah Merah,0,0
+240,Larangan Timur,Tanjung Bumi,0,0
+241,Dabung,Geger,0,0
+242,Kampak,Geger,0,0
+243,Kompol,Geger,0,0
+244,Campor,Geger,0,0
+245,Tegerpriyah,Geger,0,0
+246,Batobella,Geger,0,0
+247,Lerpak,Geger,0,0
+248,Togubang,Geger,0,0
+249,Sorpa,Galis,0,0
+250,Sadah,Galis,0,0
+251,Bangpendah,Galis,0,0
+252,Banjar,Galis,0,0
+253,Lantek Barat,Galis,0,0
+254,Lantek Temor,Galis,0,0
+255,Telagah,Galis,0,0
+256,Kelbung,Galis,0,0
+257,Belateran,Galis,0,0
+258,Tellok,Galis,0,0
+259,Longkek,Galis,0,0
+260,Pakaandaya,Galis,0,0
+261,Separah,Galis,0,0
+262,Kranggan Timur,Galis,0,0
+263,Paka'An Laok,Galis,0,0
+264,Galis,Galis,0,0
+265,Kombangan,Geger,0,0
+266,Katol Barat,Geger,0,0
+267,Trogan,Klampis,0,0
+268,Banyoneng Laok,Geger,0,0
+269,Tenggun Daya,Klampis,0,0
+270,Larangan Sorjan,Klampis,0,0
+271,Manonggal,Klampis,0,0
+272,Larangan Glintong,Klampis,0,0
+273,Panyaksagan,Klampis,0,0
+274,Lergunong,Klampis,0,0
+275,Bragang,Klampis,0,0
+276,Bantean,Klampis,0,0
+277,Karang Asem,Klampis,0,0
+278,Polongan,Klampis,0,0
+279,Muarah,Klampis,0,0
+280,Ra'As,Klampis,0,0
+281,Tolbuk,Klampis,0,0
+282,Pendabah,Kamal,0,0
+283,Tellang,Kamal,0,0
+284,Gili Anyar,Kamal,0,0
+285,Gili Timur,Kamal,1,0
+286,Kebun,Kamal,0,0
+287,Tanjung Jati,Kamal,0,0
+288,Banyu Ajuh,Kamal,0,0
+289,Gili Barat,Kamal,0,0
+290,Tajungan,Kamal,0,0
+291,Banyoneng Dajah,Geger,0,0
+292,Paterongan,Galis,0,0
+293,Kajuanak,Galis,0,0
+294,Pekadan,Galis,0,0
+295,Binoh,Burneh,0,0
+296,Panjalinan,Blega,0,0
+297,Pangeran Gedungan,Blega,0,0
+298,Ko'Olan,Blega,0,0
+299,Gigir,Blega,0,0
+300,Gebang,Bangkalan,0,0
+301,Sabiyan,Bangkalan,0,0
+302,Kemayoran,Bangkalan,1,0
+303,Kramat,Bangkalan,0,0
+304,Tambegan,Arosbaya,0,0
+305,Plakaran,Arosbaya,1,0
+306,Makam Agung,Arosbaya,1,0
+307,Karang Pao,Arosbaya,0,0
+308,Cendagah,Arosbaya,1,0
+309,Berbeluk,Arosbaya,1,0
+310,Mangkon,Arosbaya,1,0
+311,Dlemer,Arosbaya,0,0
+312,Karang Duwak,Arosbaya,1,0
+313,Arosbaya,Arosbaya,1,0
+314,Tengket,Arosbaya,1,0
+315,Lajing,Arosbaya,1,0
+316,Balung,Arosbaya,1,0
+317,Ombul,Arosbaya,0,0
+318,Glagga,Arosbaya,0,0
+319,Rosep,Blega,0,0
+320,Kampao,Blega,0,0
+321,Lombang Laok,Blega,0,0
+322,Burneh,Burneh,1,0
+323,Alas Kembang,Burneh,0,0
+324,Perreng,Burneh,0,0
+325,Pangolangan,Burneh,0,0
+326,Sobih,Burneh,0,0
+327,Arok,Burneh,0,0
+328,Kapor,Burneh,0,0
+329,Benangkah,Burneh,0,0
+330,Langkap,Burneh,0,0
+331,Jambu,Burneh,0,0
+332,Tonjung,Burneh,0,0
+333,Kajan,Blega,0,0
+334,Lombang Daya,Blega,0,0
+335,Alasraja,Blega,0,0
+336,Nyor Manis,Blega,0,0
+337,Blega,Blega,0,0
+338,Karangnangka,Blega,0,0
+339,Karang Panasan,Blega,0,0
+340,Bates,Blega,0,0
+341,Lomaer,Blega,0,0
+342,Karang Gayam,Blega,0,0
+343,Blegaoloh,Blega,0,0
+344,Karpote,Blega,0,0
+345,Bulung,Klampis,0,0
+346,Ko'ol,Klampis,0,0
+347,Bungkeng,Tanjung Bumi,0,0
+348,Dakiring,Socah,0,0
+349,Keleyan,Socah,0,0
+350,Bilaporah,Socah,0,0
+351,Sanggra Agung,Socah,0,0
+352,Buluh,Socah,0,0
+353,Socah,Socah,0,0
+354,Junganyar,Socah,0,0
+355,Alaskokon,Modung,0,0
+356,Pakong,Modung,0,0
+357,Glisgis,Modung,0,0
+358,Karanganyar,Modung,0,0
+359,Brakas Dajah,Modung,0,0
+360,Modung,Modung,0,0
+361,Suwaan,Modung,0,0
+362,Langpanggang,Modung,0,0
+363,Patengteng,Modung,0,0
+364,Serabi Barat,Modung,0,0
+365,Serabi Timur,Modung,0,0
+366,Neroh,Modung,0,0
+367,Paeng,Modung,0,0
+368,Kolla,Modung,0,0
+369,Patereman,Modung,0,0
+370,Pangpajung,Modung,0,0
+371,Petapan,Labang,0,0
+372,Petaonan,Socah,0,0
+373,Pacentan,Tanah Merah,0,0
+374,Tobaddung,Klampis,0,0
+375,Baipajung,Tanah Merah,0,0
+376,Bandang Daya,Tanjung Bumi,0,0
+377,Tagungguh,Tanjung Bumi,0,0
+378,Planggiran,Tanjung Bumi,0,0
+379,Basanah,Tanah Merah,0,0
+380,Poter,Tanah Merah,0,0
+381,Buddan,Tanah Merah,0,0
+382,Mrecah,Tanah Merah,0,0
+383,Dlamba Laok,Tanah Merah,0,0
+384,Dlambah Dajah,Tanah Merah,0,0
+385,Batangan,Tanah Merah,0,0
+386,Batonaong,Arosbaya,0,0
+387,Landak,Tanah Merah,0,0
+388,Pettong,Tanah Merah,0,0
+389,Jangkar,Tanah Merah,0,0
+390,Kendaban,Tanah Merah,0,0
+391,Tlomar,Tanah Merah,0,0
+392,Dumajah,Tanah Merah,0,0
+393,Tanah Merah Daya,Tanah Merah,0,0
+394,Petrah,Tanah Merah,0,0
+395,Padurungan,Tanah Merah,0,0
+396,Pangeleyan,Tanah Merah,0,0
+397,Kranggan Barat,Tanah Merah,0,0
+398,Tanah Merah Laok,Tanah Merah,1,0
+399,Sendang Daya,Labang,0,0
+400,Sendang Laok,Labang,0,0
+401,Jukong,Labang,0,0
+402,Labang,Labang,0,0
+403,Bandung,Konang,0,0
+404,Pakes,Konang,0,0
+405,Durin Timur,Konang,0,0
+406,Batokaban,Konang,0,0
+407,Kanegarah,Konang,0,0
+408,Durin Barat,Konang,0,0
+409,Galis Daya,Konang,0,0
+410,Batokorogan,Kokop,0,0
+411,Dupok,Kokop,0,0
+412,Banda Soleh,Kokop,0,0
+413,Katol Timur,Kokop,0,0
+414,Tramok,Kokop,0,0
+415,Bandang Laok,Kokop,0,0
+416,Mandung,Kokop,0,0
+417,Mano'An,Kokop,0,0
+418,Tlokoh,Kokop,0,0
+419,Kokop,Kokop,0,0
+420,Ampara'an,Kokop,0,0
+421,Lembung Gunung,Kokop,0,0
+422,Klampis Timur,Klampis,0,0
+423,Klampis Barat,Klampis,0,0
+424,Buluk Agung,Klampis,0,0
+425,Mrandung,Klampis,0,0
+426,Konang,Konang,0,0
+427,Senasen,Konang,0,0
+428,Campor,Konang,0,0
+429,Morombuh,Kwanyar,0,0
+430,Ba'Engas,Labang,0,0
+431,Bringin,Labang,0,0
+432,Bunajih,Labang,0,0
+433,Sukolilo Timur,Labang,0,0
+434,Sukolilo Barat,Labang,0,0
+435,Pangpong,Labang,0,0
+436,Kesek,Labang,0,0
+437,Gunung Sereng,Kwanyar,0,0
+438,Paoran,Kwanyar,0,0
+439,Sumur Kuning,Kwanyar,0,0
+440,Dlemer,Kwanyar,0,0
+441,Sambiyan,Konang,0,0
+442,Janteh,Kwanyar,0,0
+443,Karang Entang,Kwanyar,0,0
+444,Pandanan,Kwanyar,0,0
+445,Duwek Buter,Kwanyar,0,0
+446,Batah Timur,Kwanyar,0,0
+447,Batah Barat,Kwanyar,0,0
+448,Karanganyar,Kwanyar,0,0
+449,Pasanggrahan,Kwanyar,0,0
+450,Tebul,Kwanyar,0,0
+451,Cangkarman,Konang,0,0
+452,Ragung,Pangarengan,0,0
