@@ -6,7 +6,7 @@ import pandas as pd
 # judul
 st.set_page_config(
     page_title="Hasil Clustering",
-    page_icon="💮",
+    page_icon="🌏",
     layout="wide",
  
 

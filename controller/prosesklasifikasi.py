@@ -1,67 +1,162 @@
-# import joblib
-# import pandas as pd
-# import re
-# from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
-# from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+import joblib
+import pandas as pd
+import numpy as np
+from sklearn.cluster import KMeans
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+ 
+def pre_processing(data_input):
+    # read csv file x_train
+    x_train = pd.read_csv('data/X_train.csv')
+    # masukkan  dataframe to dataframe
+    x_train = pd.concat([x_train, data_input], axis=0)
+
+    # drop kolom
+    x_train = x_train.drop(['No'], axis=1)
+    # standarisasi
+    
+    return x_train
 
 
-# # Fungsi untuk memisahkan tanda baca yang terhubung dengan kata
-# def separate_punctuation(text):
-#     # Define pattern to separate punctuation
-#     pattern = r'(?<=[A-Za-z])([.,!?])|([.,!?])(?=[A-Za-z])'
-#     separated_text = re.sub(pattern, r' \1\2 ', text)
-#     return separated_text
+def normalisasi(data_input):
+    
+    # 1. Ubah kolom "Jenis prasarana trasportasi" menjadi numerik (1 jika "Darat", 0 untuk lainnya)
+    data_input['Jenis prasarana trasportasi'] = data_input['Jenis prasarana trasportasi'].replace({
+        'Darat': 1, 'Air' : '2', 'Darat dan Air' : 3,'Lainnya': 4
+        })
 
-# # Fungsi untuk membersihkan teks
-# def clean_text(df, text_field, new_text_field_name):
-#     # Lowercasing
-#     df[new_text_field_name] = df[text_field].apply(lambda x: ' '.join(x)).str.lower()
-#     # Menghapus tanda baca, mention, link, dan karakter khusus lainnya
-#     df[new_text_field_name] = df[new_text_field_name].apply(lambda elem: re.sub(r"(@[A-Za-z0-9_]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)|^rt|http.+?", "", elem))
-#     # Menghapus angka
-#     df[new_text_field_name] = df[new_text_field_name].apply(lambda elem: re.sub(r"\d+", "", elem))
-#     # Pisahkan tanda baca yang terhubung dengan kata
-#     df[new_text_field_name] = df[new_text_field_name].apply(lambda elem: separate_punctuation(elem))
-#     # Tokenisasi kembali setelah pemisahan tanda baca
-#     df[new_text_field_name] = df[new_text_field_name].apply(lambda x: x.split())
-#     return df
+    # 2. Ubah kolom "Jenis permukaan jalan darat"
+    data_input['Jenis permukaan  jalan darat'] = data_input['Jenis permukaan  jalan darat'].replace({
+        'Aspal/Beton': 1,
+        'Diperkeras (kerikil. batu. dll)': 2,
+        'Kerikil. Batu. dll	': 3,
+        'lainnya': 4
+    })
 
-# # Fungsi untuk normalisasi
-# def normalisasi(teks, kamus):
-#     kalimat_final = []
-#     for kata in teks:
-#         kata_benar = kamus[kamus['Tidak Baku'] == kata]['Baku'].values
-#         if len(kata_benar) > 0:
-#             kalimat_final.append(kata_benar[0])
-#         else:
-#             kalimat_final.append(kata)
-#     return kalimat_final
+    # 3. Ubah kolom "Media Online" menjadi numerik (1 untuk "Ada", 0 untuk "Tidak Ada")
+    data_input['Media Online'] = data_input['Media Online'].replace({'Ada': 1, 'Tidak Ada': 0})
 
-# # Daftar kata-kata stop words tambahan
-# more_stopwords = {
-# 'dar', 'hai', 'txffzhybv', 'bg', 'bot', 'yg', 'deh', 'ypdhl', 'tidak', 'nic', 'bos', 'hmmm', 'ky', 'yaa', 'mo', 'fb', 'laah', 'br', 'blg', 'da', 'x', 'jt', 'dan',
-# 'y', 'b', 't', 'yang', 'sj', 'faq', 'jsajan', 'aja', 'mis', 'mf', 'hmm', 'jii', 'issi', 'the', 'kok', 'ng', 'di', 'nih', 'lah', 'adm', 'nig', 'min', 'y', 'kak', 'k', 'va',
-# 'dong', 'ai', 'nya', 'e', 'tuh', 'nih', 'di' , 'min','ke', 'dgn', 'nya', 'jadi', 'ada', 'nya', 'ah', 'aamiin', 'hehehe', 'hhhh', 'hey', 'hmmm', 'hmm', 'ram', 'the', 'tfr', 'wkwk'
-# }
+    # 4. Ubah kolom "Desa/Kelurahan" menjadi numerik
+    data_input['Desa/Kelurahan'] = data_input['Desa/Kelurahan'].astype('category').cat.codes
 
-# # Membuat daftar kata-kata stop words
-# stop_words_factory = StopWordRemoverFactory()
-# stop_words = stop_words_factory.get_stop_words()
-# stop_words = stop_words.extend(more_stopwords)
+    # 5. Ubah kolom "Kecamatan" menjadi numerik
+    data_input['Kecamatan'] = data_input['Kecamatan'].astype('category').cat.codes
 
-# # Menginisialisasi StopWordRemover dengan daftar stop words yang diperbarui
-# stopword_remover = stop_words_factory.create_stop_word_remover()
 
-# # Fungsi untuk menghapus stop words dari teks
-# def remove_stopwords(text):
-#     if isinstance(text, list):
-#         text = ' '.join(text)
-#     return stopword_remover.remove(text)
+    # 7. Pastikan kolom angka lainnya sesuai tipe data yang diinginkan
+    data_input['Jarak ke ibu kota kecamatan'] = data_input['Jarak ke ibu kota kecamatan'].astype(int)
+    data_input['Jarak ke ibu kota kabupaten'] = data_input['Jarak ke ibu kota kabupaten'].astype(int)
 
-# # Inisialisasi Stemmer dari Sastrawi
-# factory = StemmerFactory()
-# stemmer = factory.create_stemmer()
+    return data_input
 
-# # Fungsi lemmatization menggunakan Sastrawi
-# def lemmatize_indonesian(token):
-#     return stemmer.stem(token.text)
+def som(data_input):
+    # Data setelah normalisasi (misalnya, data_input_normalized adalah hasil normalisasi)
+    data_normalized = data_input.iloc[:, 2:].values  # Mengambil kolom fitur saja (tanpa No, Desa/Kelurahan, Kecamatan)
+
+    # 1. Tentukan dimensi grid SOM
+    grid_rows, grid_cols = 3, 3  # Dimensi SOM (3x3 grid)
+
+    # 2. Tentukan jumlah fitur (dimensi input)
+    num_features = data_normalized.shape[1]
+
+    # 3. Inisialisasi bobot random (nilai antara 0 dan 1)
+    weights = np.random.rand(grid_rows, grid_cols, num_features)
+
+    # 4. Perhitungan jarak Euclidean untuk setiap data ke setiap bobot
+    distances = np.zeros((data_normalized.shape[0], grid_rows, grid_cols))
+
+    for i, data_point in enumerate(data_normalized):
+        for row in range(grid_rows):
+            for col in range(grid_cols):
+                # Hitung jarak Euclidean
+                distances[i, row, col] = np.sqrt(np.sum((data_point - weights[row, col]) ** 2))
+    # 5. Temukan jarak terkecil dan indeksnya
+    closest_units = []
+
+    for i, distance_matrix in enumerate(distances):
+        min_distance = np.min(distance_matrix)  # Nilai jarak terkecil
+        min_index = np.unravel_index(np.argmin(distance_matrix), distance_matrix.shape)  # Indeks dari jarak terkecil
+        closest_units.append((i, min_distance, min_index))
+
+    # Output bobot awal, jarak, dan unit terdekat
+    return closest_units
+
+def clustering(data_input):
+    # Data setelah normalisasi (data_normalized adalah hasil normalisasi)
+    data = data_input
+
+    # Rentang jumlah cluster (K)
+    k_values = range(2, 11)  # Mulai dari 2 hingga 10
+
+    # List untuk menyimpan hasil akurasi
+    accuracy_results = []
+
+    for k in k_values:
+        # 1. Klustering dengan K-Means
+        kmeans = KMeans(n_clusters=k, random_state=42)
+        kmeans_labels = kmeans.fit_predict(data)
+
+        # 2. Split data menjadi training dan testing
+        X_train, X_test, y_train, y_test = train_test_split(
+            data, kmeans_labels, test_size=0.3, random_state=42
+        )
+
+        # 3. Training model Naive Bayes
+        nb_model = GaussianNB()
+        nb_model.fit(X_train, y_train)
+
+        # 4. Prediksi pada data testing
+        y_pred = nb_model.predict(X_test)
+
+        # 5. Hitung akurasi
+        accuracy = accuracy_score(y_test, y_pred)
+        accuracy_results.append((k, accuracy))
+
+        # 6. Confusion Matrix dan Classification Report
+        conf_matrix = confusion_matrix(y_test, y_pred)
+        class_report = classification_report(y_test, y_pred)
+
+        # print(f"K={k}: Akurasi = {accuracy:.4f}")
+        # print("Confusion Matrix:")
+        # print(conf_matrix)
+        # print("Classification Report:")
+        # print(class_report)
+
+    return kmeans_labels
+
+    # Output hasil akurasi
+    # def print_accuracies():
+    #     print("\nHasil Akurasi untuk Setiap K:")
+    #     for k, acc in accuracy_results:
+    #         print(f"Jumlah Cluster (K): {k}, Akurasi: {acc:.4f}")
+
+    # print_accuracies()
+
+    # # Validasi silang menggunakan cross-validation untuk K terbaik
+    # best_k = max(accuracy_results, key=lambda x: x[1])[0]
+    # print(f"\nMelakukan cross-validation untuk K terbaik (K={best_k}):")
+
+    # kmeans = KMeans(n_clusters=best_k, random_state=42)
+    # kmeans_labels = kmeans.fit_predict(data)
+    # scores = cross_val_score(GaussianNB(), data, kmeans_labels, cv=5)
+
+    # print("Cross-Validation Scores:", [f"{score:.4f}" for score in scores])
+    # print("Mean Accuracy:", f"{np.mean(scores):.4f}")
+
+def convert_to_int(data_input):
+    # Contoh: Membaca df
+    # df = pd.read_csv("path_to_dataset.csv")
+
+    # Daftar kolom dengan tipe data object
+    object_columns = data_input.select_dtypes(include=['object']).columns
+
+    # Ubah kolom 'object' menjadi 'int' (jika memungkinkan)
+    for column in object_columns:
+        try:
+            data_input[column] = pd.to_numeric(data_input[column], errors='coerce').fillna(0).astype(int)
+            print(f"Kolom '{column}' berhasil diubah ke integer.")
+        except Exception as e:
+            print(f"Gagal mengubah kolom '{column}' ke integer: {e}")
+
+    return data_input
