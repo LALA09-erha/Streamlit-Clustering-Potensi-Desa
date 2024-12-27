@@ -1,6 +1,6 @@
 # inisialisasi library
-import streamlit as st
-import pandas as pd
+import streamlit as st # type: ignore
+import pandas as pd # type: ignore
 
 # judul website
 st.set_page_config(

@@ -1,25 +1,26 @@
-import joblib
-import pandas as pd
-import numpy as np
-from sklearn.cluster import KMeans
-from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+import joblib # type: ignore
+import pandas as pd # type: ignore
+import numpy as np # type: ignore
+from sklearn.cluster import KMeans # type: ignore
+from sklearn.model_selection import train_test_split, cross_val_score # type: ignore
+from sklearn.naive_bayes import GaussianNB # type: ignore
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report # type: ignore
  
 def pre_processing(data_input):
     # read csv file x_train
-    x_train = pd.read_csv('data/X_train.csv')
+    X_test = pd.read_csv('data/X_train.csv')
+    # X_test = pd.read_csv('data/X_test.csv')
     # masukkan  dataframe to dataframe
-    x_train = pd.concat([x_train, data_input], axis=0)
+    X_test = pd.concat([X_test, data_input], axis=0)
 
     # drop kolom
-    x_train = x_train.drop(['No'], axis=1)
+    X_test = X_test.drop(['No'], axis=1)
     # standarisasi
     
-    return x_train
+    return X_test
 
 
-def normalisasi(data_input):
+def transform(data_input):
     
     # 1. Ubah kolom "Jenis prasarana trasportasi" menjadi numerik (1 jika "Darat", 0 untuk lainnya)
     data_input['Jenis prasarana trasportasi'] = data_input['Jenis prasarana trasportasi'].replace({
@@ -86,68 +87,15 @@ def clustering(data_input):
     # Data setelah normalisasi (data_normalized adalah hasil normalisasi)
     data = data_input
 
-    # Rentang jumlah cluster (K)
-    k_values = range(2, 11)  # Mulai dari 2 hingga 10
+    # Inisialisasi KMeans dari models/kmeans_3.pkl
+    kmeans = joblib.load('models/kmeans_3.pkl')
 
-    # List untuk menyimpan hasil akurasi
-    accuracy_results = []
+    # Melakukan clustering
+    clusters = kmeans.predict(data)
 
-    for k in k_values:
-        # 1. Klustering dengan K-Means
-        kmeans = KMeans(n_clusters=k, random_state=42)
-        kmeans_labels = kmeans.fit_predict(data)
-
-        # 2. Split data menjadi training dan testing
-        X_train, X_test, y_train, y_test = train_test_split(
-            data, kmeans_labels, test_size=0.3, random_state=42
-        )
-
-        # 3. Training model Naive Bayes
-        nb_model = GaussianNB()
-        nb_model.fit(X_train, y_train)
-
-        # 4. Prediksi pada data testing
-        y_pred = nb_model.predict(X_test)
-
-        # 5. Hitung akurasi
-        accuracy = accuracy_score(y_test, y_pred)
-        accuracy_results.append((k, accuracy))
-
-        # 6. Confusion Matrix dan Classification Report
-        conf_matrix = confusion_matrix(y_test, y_pred)
-        class_report = classification_report(y_test, y_pred)
-
-        # print(f"K={k}: Akurasi = {accuracy:.4f}")
-        # print("Confusion Matrix:")
-        # print(conf_matrix)
-        # print("Classification Report:")
-        # print(class_report)
-
-    return kmeans_labels
-
-    # Output hasil akurasi
-    # def print_accuracies():
-    #     print("\nHasil Akurasi untuk Setiap K:")
-    #     for k, acc in accuracy_results:
-    #         print(f"Jumlah Cluster (K): {k}, Akurasi: {acc:.4f}")
-
-    # print_accuracies()
-
-    # # Validasi silang menggunakan cross-validation untuk K terbaik
-    # best_k = max(accuracy_results, key=lambda x: x[1])[0]
-    # print(f"\nMelakukan cross-validation untuk K terbaik (K={best_k}):")
-
-    # kmeans = KMeans(n_clusters=best_k, random_state=42)
-    # kmeans_labels = kmeans.fit_predict(data)
-    # scores = cross_val_score(GaussianNB(), data, kmeans_labels, cv=5)
-
-    # print("Cross-Validation Scores:", [f"{score:.4f}" for score in scores])
-    # print("Mean Accuracy:", f"{np.mean(scores):.4f}")
+    return clusters
 
 def convert_to_int(data_input):
-    # Contoh: Membaca df
-    # df = pd.read_csv("path_to_dataset.csv")
-
     # Daftar kolom dengan tipe data object
     object_columns = data_input.select_dtypes(include=['object']).columns
 
@@ -155,8 +103,21 @@ def convert_to_int(data_input):
     for column in object_columns:
         try:
             data_input[column] = pd.to_numeric(data_input[column], errors='coerce').fillna(0).astype(int)
-            print(f"Kolom '{column}' berhasil diubah ke integer.")
+            # print(f"Kolom '{column}' berhasil diubah ke integer.")
         except Exception as e:
-            print(f"Gagal mengubah kolom '{column}' ke integer: {e}")
+            pass
+            # print(f"Gagal mengubah kolom '{column}' ke integer: {e}")
 
+    return data_input
+
+
+def normalisasi(data_input):
+    # joblib untuk normalisasi data
+    # print(data_input)
+    scaler = joblib.load('models/scaler.sav')
+
+    # # normalisasi data
+    data_input = scaler.fit_transform(data_input)
+
+    
     return data_input

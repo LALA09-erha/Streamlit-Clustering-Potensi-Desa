@@ -1,6 +1,8 @@
-import streamlit as st
+import streamlit as st # type: ignore
 import controller.prosesklasifikasi as pk
-import pandas as pd
+import controller.prosesSkala as ps
+import pandas as pd # type: ignore
+
 # import spacy
 # from spacy.tokens import Token
 # import spacy.cli
@@ -56,7 +58,7 @@ with input6:
 with input7:
     jumlah_tempat_makan = st.number_input(placeholder='Jumlah Tempat Makan' , label='Jumlah Tempat Makan' , min_value=0)
 with input8:
-    jumlah_menara_telekomunikasi = st.number_input(placeholder='Jumlah Menara Telepon Seluler' , label='Jumlah Menara Telepon Seluler' , min_value=0)
+    jumlah_menara_telekomunikasi = st.number_input(placeholder='Jumlah Menara Telepon Seluler' , label='Jumlah Menara Telepon Seluler (unit)' , min_value=0)
 
 with input9:
     jarak_ke_kecamatan = st.number_input(placeholder='Jarak ke Ibu Kota Kecamatan' , label='Jarak ke Ibu Kota Kecamatan (km)')
@@ -139,15 +141,47 @@ if submit:
             data_preproses = pk.pre_processing(data_input)
 
             # normalisasi untuk ubah data menjadi angka
-            data_normalisasi = pk.normalisasi(data_preproses)
+            data_normalisasi = pk.transform(data_preproses)
             data_normalisasi = data_normalisasi.drop(['Desa/Kelurahan', 'Kecamatan'], axis=1)
 
             # proses convert data menjadi int
             data_normalisasi = pk.convert_to_int(data_normalisasi)
+
+            # copy data normalisasi
+            data_skala = data_normalisasi.copy()
+             # perhitungan skala
+            data_skala = ps.skala_kriteria(data_skala)
+
+            # proses normalisasi minmax 
+            data_normalisasi = pk.normalisasi(data_normalisasi)
             # proses SOM  
             # data_som = pk.som(data_normalisasi)
 
             # proses clustering
             data_cluster = pk.clustering(data_normalisasi)
 
-            st.write(data_cluster)
+            
+
+
+            # Transform to label 
+            if(data_cluster[-1] == 0):
+                st.warning(f'Desa {desa} di kecamatan {kecamatan} terkelompokkan menjadi desa : Kurang Potensi' , icon="⚠️" )
+                # data_cluster = 'Kurang Potensi'
+            elif(data_cluster[-1] == 1):
+                # data_cluster = 'Potensi Sedang'
+                st.info(f'Desa {desa} di kecamatan {kecamatan} terkelompokkan menjadi desa : Potensi Sedang' , icon="📣" )
+            # elif(data_cluster[-1] == 2):
+            else:
+                # data_cluster = 'Potensi Tinggi'
+                st.success(f'Desa {desa} di kecamatan {kecamatan} terkelompokkan menjadi desa : Potensi Tinggi' , icon="✅" )
+
+        #    buatkan tampilan hasil skala kriteria
+            # st.write(data_skala.iloc[-1])
+            # buatkan markdown list  dengan isi dari fitur dan valuenya
+            
+            textSkala = f"""\n
+- Kriteria Luas total area : {data_skala.iloc[-1]['Luas total area']} \n- Kriteria Jenis permukaan jalan darat : {data_skala.iloc[-1]['Jenis permukaan  jalan darat']} \n- Kriteria Jenis prasarana trasportasi : {data_skala.iloc[-1]['Jenis prasarana trasportasi']}  \n- Kriteria Akomodasi. hotel. homestay : {data_skala.iloc[-1]['Akomodasi. hotel. homestay']} \n- Kriteria Restourant/Tempat makan : {data_skala.iloc[-1]['Restourant/Tempat makan']} \n- Kriteria Jumlah Menara Telepon Seluler : {data_skala.iloc[-1]['Jumlah Menara Telepon Seluler']} \n- Kriteria Jarak ke ibu kota kecamatan : {data_skala.iloc[-1]['Jarak ke ibu kota kecamatan']} \n- Kriteria Jarak ke ibu kota kabupaten : {data_skala.iloc[-1]['Jarak ke ibu kota kabupaten']} \n- Kriteria Wisnus : {data_skala.iloc[-1]['Wisnus']} \n- Kriteria Wisman : {data_skala.iloc[-1]['Wisman']} \n- Kriteria Failitas : {data_skala.iloc[-1]['Failitas']} \n- Kriteria Harga Tiket : {data_skala.iloc[-1]['Harga Tiket']} \n- Kriteria Rating : {data_skala.iloc[-1]['Rating']} \n- Kriteria Pantai/Danau : {data_skala.iloc[-1]['Pantai/Danau']} \n- Kriteria Media Online : {data_skala.iloc[-1]['Media Online']}\n
+"""
+            
+            st.markdown(f'<div style="text-align: justify;"> <b>Dengan Hasil Skala Kriteria Sebagai Berikut: {textSkala}', unsafe_allow_html=True)
+            
