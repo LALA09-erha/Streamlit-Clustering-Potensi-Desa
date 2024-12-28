@@ -30,17 +30,17 @@ st.markdown("<h1 style='text-align: center; color: white; margin:0 ; padding:0;'
 
 st.markdown("<p style='text-align: center; color: white; margin:0 ; padding:0;'>Download Tamplate dan Upload data baru di bawah ini</p>", unsafe_allow_html=True)
 
-# download tamplate excel from link github
-
-with open('../data/X_Test.csv', 'rb') as file:
-    st.download_button(
-        label="Download Template File",
-        data=file,
-        file_name='Tamplate Format Data.csv',
-        mime='application/vnd.ms-excel'
-    )
-
-
+# buatkan tombol download di tengah halaman dengan link external menggunakn st.markdown
+# buatkan di tengah halaman
+st.markdown("""
+            <br>
+<div style="text-align: center; align-items: center;">
+<button style='font-size: 20px; font-weight: bold; text-align:center; 
+padding: 10px; border-radius: 10px; color: white; text-transform: capitalize;'>
+<a href='https://drive.google.com/uc?export=download&id=1STCQ6EP2slYkLGcxgfwmo2azm9QBy74E' target='_blank'>Download Tamplate</a>
+</button>
+</div>
+            """, unsafe_allow_html=True)
 
 # buatkan file upload di tengah halaman  xlsx , xls, csv
 input_file = st.file_uploader("Upload File Excel", type=["csv", "xlsx", "xls"])
