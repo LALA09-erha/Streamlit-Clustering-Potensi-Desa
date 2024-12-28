@@ -32,7 +32,7 @@ st.markdown("<p style='text-align: center; color: white; margin:0 ; padding:0;'>
 
 # download tamplate excel from link github
 
-with open('/data/X_Test.csv', 'rb') as file:
+with open('../data/X_Test.csv', 'rb') as file:
     st.download_button(
         label="Download Template File",
         data=file,
