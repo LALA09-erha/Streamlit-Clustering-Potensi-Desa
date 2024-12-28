@@ -1,16 +1,14 @@
 # inisiasi library
-import streamlit as st
-import pandas as pd
-
+import streamlit as st # type: ignore
+import pandas as pd # type: ignore
 
 # judul
 st.set_page_config(
     page_title="Hasil Skala Kriteria",
     page_icon="🌏",
     layout="wide",
- 
-
 )
+# setting sidebar
 st.markdown("""
 <style>
             

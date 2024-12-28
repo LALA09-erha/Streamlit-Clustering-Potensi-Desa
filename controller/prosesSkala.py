@@ -175,13 +175,13 @@ def klasifikasi_jarak(value):
 
 def klasifikasi_akomodasi(value):
     if value > 5:
-        return "Sangat murah"
-    elif 4 <= value <= 5:
-        return "Murah"
-    elif 2 <= value < 4:
-        return "Cukup mahal"
-    else:
         return "Mahal"
+    elif 4 <= value <= 5:
+        return "Cukup mahal"
+    elif 2 <= value < 4:
+        return "Murah"
+    else:
+        return "Sangat murah"
 
 def klasifikasi_tempat_makan(value):
     if value > 5:

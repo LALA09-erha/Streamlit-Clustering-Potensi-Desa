@@ -3,13 +3,6 @@ import controller.prosesklasifikasi as pk
 import controller.prosesSkala as ps
 import pandas as pd # type: ignore
 
-# import spacy
-# from spacy.tokens import Token
-# import spacy.cli
-# from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-# from sklearn.preprocessing import normalize
-# import joblib
-
 # judul halaman
 st.set_page_config(
     page_title="Uji Coba",
@@ -59,20 +52,16 @@ with input7:
     jumlah_tempat_makan = st.number_input(placeholder='Jumlah Tempat Makan' , label='Jumlah Tempat Makan' , min_value=0)
 with input8:
     jumlah_menara_telekomunikasi = st.number_input(placeholder='Jumlah Menara Telepon Seluler' , label='Jumlah Menara Telepon Seluler (unit)' , min_value=0)
-
 with input9:
     jarak_ke_kecamatan = st.number_input(placeholder='Jarak ke Ibu Kota Kecamatan' , label='Jarak ke Ibu Kota Kecamatan (km)')
-
 with input10:
     jarak_ke_kabupaten = st.number_input(placeholder='Jarak ke Ibu Kota Kabupaten' , label='Jarak ke Ibu Kota Kabupaten (km)')
-
 with input11:
     jumlah_wisnus = st.number_input(placeholder='Jumlah Wisatawan Nusantara (orang)' , label='Jumlah Wisatawan Nusantara (orang)' , min_value=0)
-
 with input12:
     jumlah_wisman = st.number_input(placeholder='Jumlah Wisatawan Mancanegara (orang)' , label='Jumlah Wisatawan Mancanegara (orang)' , min_value=0)
 with input13:
-    jumlah_fasilitas = st.number_input(placeholder='Jumlah Fasilitas Pendukung' , label='Jumlah Fasilitas Pendukung' , min_value=0)
+    jumlah_fasilitas = st.number_input(placeholder='Jumlah Fasilitas Pendukung' , label='Jumlah Fasilitas Pendukung', min_value=0)
 with input14:
     harga_tiket = st.number_input(placeholder='Harga Tiket Wisata' , label='Harga Tiket Wisata (Rp)' , min_value=0 )
 with input15:
@@ -98,12 +87,10 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# buat tombol submit
 submit = st.button('Submit')
 
-
-
-
-
+# logika jika tombol submit di klik
 if submit:
     with st.spinner('Sedang memproses data...'):
         
@@ -136,14 +123,13 @@ if submit:
                 'Pantai/Danau' : [jumlah_pantai],
                 'Media Online' : [media_online]
             })
-            # st.write(data_input.dtypes)
             # proses pre - processing
             data_preproses = pk.pre_processing(data_input)
 
             # normalisasi untuk ubah data menjadi angka
             data_normalisasi = pk.transform(data_preproses)
+            # drop kolom
             data_normalisasi = data_normalisasi.drop(['Desa/Kelurahan', 'Kecamatan'], axis=1)
-
             # proses convert data menjadi int
             data_normalisasi = pk.convert_to_int(data_normalisasi)
 
@@ -151,12 +137,8 @@ if submit:
             data_skala = data_normalisasi.copy()
              # perhitungan skala
             data_skala = ps.skala_kriteria(data_skala)
-
             # proses normalisasi minmax 
-            data_normalisasi = pk.normalisasi(data_normalisasi)
-            # proses SOM  
-            # data_som = pk.som(data_normalisasi)
-
+            data_normalisasi = pk.normalisasi(data_normalisasi) 
             # proses clustering
             data_cluster = pk.clustering(data_normalisasi)
 
@@ -165,23 +147,14 @@ if submit:
 
             # Transform to label 
             if(data_cluster[-1] == 0):
-                st.warning(f'Desa {desa} di kecamatan {kecamatan} terkelompokkan menjadi desa : Kurang Potensi' , icon="⚠️" )
-                # data_cluster = 'Kurang Potensi'
+                st.warning(f'Desa {desa} di kecamatan {kecamatan} terkelompokkan menjadi desa : Potensi Kurang' , icon="⚠️" )
             elif(data_cluster[-1] == 1):
-                # data_cluster = 'Potensi Sedang'
-                st.info(f'Desa {desa} di kecamatan {kecamatan} terkelompokkan menjadi desa : Potensi Sedang' , icon="📣" )
-            # elif(data_cluster[-1] == 2):
+                 st.info(f'Desa {desa} di kecamatan {kecamatan} terkelompokkan menjadi desa : Potensi Sedang' , icon="📣" )
             else:
-                # data_cluster = 'Potensi Tinggi'
-                st.success(f'Desa {desa} di kecamatan {kecamatan} terkelompokkan menjadi desa : Potensi Tinggi' , icon="✅" )
-
-        #    buatkan tampilan hasil skala kriteria
-            # st.write(data_skala.iloc[-1])
-            # buatkan markdown list  dengan isi dari fitur dan valuenya
+                 st.success(f'Desa {desa} di kecamatan {kecamatan} terkelompokkan menjadi desa : Potensi Tinggi' , icon="✅" )
             
             textSkala = f"""\n
 - Kriteria Luas total area : {data_skala.iloc[-1]['Luas total area']} \n- Kriteria Jenis permukaan jalan darat : {data_skala.iloc[-1]['Jenis permukaan  jalan darat']} \n- Kriteria Jenis prasarana trasportasi : {data_skala.iloc[-1]['Jenis prasarana trasportasi']}  \n- Kriteria Akomodasi. hotel. homestay : {data_skala.iloc[-1]['Akomodasi. hotel. homestay']} \n- Kriteria Restourant/Tempat makan : {data_skala.iloc[-1]['Restourant/Tempat makan']} \n- Kriteria Jumlah Menara Telepon Seluler : {data_skala.iloc[-1]['Jumlah Menara Telepon Seluler']} \n- Kriteria Jarak ke ibu kota kecamatan : {data_skala.iloc[-1]['Jarak ke ibu kota kecamatan']} \n- Kriteria Jarak ke ibu kota kabupaten : {data_skala.iloc[-1]['Jarak ke ibu kota kabupaten']} \n- Kriteria Wisnus : {data_skala.iloc[-1]['Wisnus']} \n- Kriteria Wisman : {data_skala.iloc[-1]['Wisman']} \n- Kriteria Failitas : {data_skala.iloc[-1]['Failitas']} \n- Kriteria Harga Tiket : {data_skala.iloc[-1]['Harga Tiket']} \n- Kriteria Rating : {data_skala.iloc[-1]['Rating']} \n- Kriteria Pantai/Danau : {data_skala.iloc[-1]['Pantai/Danau']} \n- Kriteria Media Online : {data_skala.iloc[-1]['Media Online']}\n
-"""
-            
+            """
             st.markdown(f'<div style="text-align: justify;"> <b>Dengan Hasil Skala Kriteria Sebagai Berikut: {textSkala}', unsafe_allow_html=True)
             
