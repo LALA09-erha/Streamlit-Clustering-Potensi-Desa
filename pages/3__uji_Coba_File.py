@@ -30,8 +30,9 @@ st.markdown("<h1 style='text-align: center; color: white; margin:0 ; padding:0;'
 
 st.markdown("<p style='text-align: center; color: white; margin:0 ; padding:0;'>Download Tamplate dan Upload data baru di bawah ini</p>", unsafe_allow_html=True)
 
-# download tamplate excel di tengah halaman
-with open('data/X_Test.csv', 'rb') as file:
+# download tamplate excel from link github
+
+with open('/data/X_Test.csv', 'rb') as file:
     st.download_button(
         label="Download Template File",
         data=file,
