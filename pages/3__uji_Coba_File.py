@@ -58,7 +58,7 @@ st.markdown("""
     text-align: center;
     padding: 10px;
     border-radius: 10px;
-    color: white;
+    color: yellow;
     text-transform: capitalize;
 }
 </style>
@@ -104,9 +104,38 @@ if submit:
         data_final['Label'] = data_label_transform.values
 
         # tampilkan data
-        st.markdown("<h4 style='text-align: center; color: white; margin:0 ; padding:0;'>Hasil Pengujian dan Hasil Skala Kriteria</h4>", unsafe_allow_html=True)
-        st.write(data_final)
+        st.markdown("<h1 style='text-align: center; color: white; margin:0 ; padding:0;'>Hasil Pengujian</h1>", unsafe_allow_html=True)
         
+        # ambil kolom Desa/Kelurahan dan Kecamatan dari data_input
+        data_show_with_desa = data_input[['Desa/Kelurahan', 'Kecamatan']]
+
+        # gabungkan data_show_with_desa dengan data_label_transform
+        data_show_with_desa['Label'] = data_label_transform.values
+
+        # pisah label dengan label Potensi Tinggi
+        data_show_with_desa_potensi_tinggi = data_show_with_desa[data_show_with_desa['Label'] == 'Potensi Tinggi']
+
+        # pisah label dengan label Potensi Kurang
+        data_show_with_desa_potensi_kurang = data_show_with_desa[data_show_with_desa['Label'] == 'Potensi Kurang']
+
+        # pisah label dengan label Potensi Sedang
+        data_show_with_desa_potensi_sedang = data_show_with_desa[data_show_with_desa['Label'] == 'Potensi Sedang']
+
+
+        # tampilkan data_show_with_desa
+        
+        with st.columns(3)[1]:
+            st.write('Desa yang Potensi Tinggi')
+            # tampilkan data_show_with_desa_potensi_tinggi
+            st.dataframe(data_show_with_desa_potensi_tinggi)
+
+            st.write('Desa yang Potensi Sedang')
+            # tampilkan data_show_with_desa_potensi_kurang
+            st.dataframe(data_show_with_desa_potensi_sedang)
+
+            st.write('Desa yang Potensi Kurang')
+            # tampilkan data_show_with_desa_potensi_sedang
+            st.dataframe(data_show_with_desa_potensi_kurang)
 
 
 
