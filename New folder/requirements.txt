@@ -1,0 +1,15 @@
+pip
+pandas 
+joblib==1.2.0
+python-time
+streamlit
+scikit-learn 
+streamlit-modal
+st-pages
+matplotlib
+seaborn
+regex
+Sastrawi
+spacy
+vaderSentiment
+numpy
