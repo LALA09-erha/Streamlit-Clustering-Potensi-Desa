@@ -26,7 +26,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h1 style='text-align: center; color: white; margin:0 ; padding:0;'>Pengujian dengan Data Baru Dengan File Excel</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: white; margin:0 ; padding:0; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;'>Pengujian dengan Data Baru Dengan File Excel</h1>", unsafe_allow_html=True)
 
 st.markdown("<p style='text-align: center; color: white; margin:0 ; padding:0;'>Download Tamplate dan Upload data baru di bawah ini</p>", unsafe_allow_html=True)
 
